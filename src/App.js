@@ -3,8 +3,8 @@ import "./App.css";
 import { useAcceptJs } from "react-acceptjs";
 
 const authData = {
-  apiLoginID: "73VCXzc728",
-  clientKey: "4t4q8J8wTPPf843L",
+  apiLoginID: "46g9UcuT2",
+  clientKey: "768qRY44Muw9D9ma",
 };
 
 function App() {
