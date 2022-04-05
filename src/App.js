@@ -2,13 +2,18 @@ import React from "react";
 import "./App.css";
 import { useAcceptJs } from "react-acceptjs";
 
+// transaction key === 768qRY44Muw9D9ma
+
 const authData = {
   apiLoginID: "46g9UcuT2",
-  clientKey: "768qRY44Muw9D9ma",
+  clientKey: "879cVwvKw4jaqCQrB8yA7UA7z8MHbb9nt57hQFW2bsXbWYq7mueC472DmMA94m96",
 };
 
 function App() {
-  const { dispatchData, loading, error } = useAcceptJs({ authData });
+  const { dispatchData, loading, error } = useAcceptJs({
+    authData,
+    environment: "SANDBOX",
+  });
   const [cardData, setCardData] = React.useState({
     cardNumber: "",
     month: "",
