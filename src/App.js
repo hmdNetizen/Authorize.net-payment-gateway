@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { useAcceptJs } from "react-acceptjs";
+import { useAcceptJs, HostedForm } from "react-acceptjs";
 
 // transaction key === 768qRY44Muw9D9ma
 
@@ -10,10 +10,12 @@ const authData = {
 };
 
 function App() {
+  // eslint-disable-next-line
   const { dispatchData, loading, error } = useAcceptJs({
     authData,
     environment: "SANDBOX",
   });
+  // eslint-disable-next-line
   const [cardData, setCardData] = React.useState({
     cardNumber: "",
     month: "",
@@ -21,16 +23,21 @@ function App() {
     cardCode: "",
   });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // Dispatch CC data to Authorize.net and receive payment nonce for use on your server
-    const response = await dispatchData({ cardData });
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   // Dispatch CC data to Authorize.net and receive payment nonce for use on your server
+  //   const response = await dispatchData({ cardData });
+  //   console.log("Received response:", response);
+  // };
+
+  const handleSubmit = (response) => {
     console.log("Received response:", response);
   };
 
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
+      <HostedForm authData={authData} onSubmit={handleSubmit} />
+      {/* <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="cardNumber"
@@ -70,7 +77,7 @@ function App() {
         <button type="submit" disabled={loading || error}>
           Pay
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }
